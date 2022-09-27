@@ -9,7 +9,7 @@ import (
 )
 
 type RouterOSRestClient struct {
-	addr     url.URL
+	addr     *url.URL
 	client   *http.Client
 	username string
 	password string
@@ -55,7 +55,7 @@ func (client *RouterOSRestClient) SendCommand(cmd string, args map[string]string
 	}
 	addr.User = url.UserPassword(client.username, client.password)
 	req := &http.Request{
-		URL:    &addr,
+		URL:    addr,
 		Method: http.MethodPost,
 	}
 
@@ -124,7 +124,7 @@ func (client *RouterOSRestClient) SendCommand(cmd string, args map[string]string
 	}
 }
 
-func New(addr url.URL, username string, password string, client *http.Client) *RouterOSRestClient {
+func New(addr *url.URL, username string, password string, client *http.Client) *RouterOSRestClient {
 	if client == nil {
 		client = http.DefaultClient
 	}
