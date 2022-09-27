@@ -1,4 +1,4 @@
-package tcp
+package api
 
 import (
 	"github.com/jenrik/go-routeros-client/clients"

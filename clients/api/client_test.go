@@ -1,4 +1,4 @@
-package tcp
+package api
 
 import (
 	"fmt"
