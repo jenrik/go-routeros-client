@@ -3,6 +3,7 @@ package api
 import (
 	"bufio"
 	"encoding/binary"
+	"encoding/json"
 	"errors"
 	"github.com/jenrik/go-routeros-client/clients"
 	"io"
@@ -33,7 +34,11 @@ type RouterOSTCPErrorReply struct {
 }
 
 func (err RouterOSTCPErrorReply) Error() string {
-	return "RouterOS send error or exception in response to command"
+	bytes, marshallErr := json.Marshal(err.Words)
+	if marshallErr != nil {
+		panic(err)
+	}
+	return "RouterOS send error or exception in response to command, " + string(bytes)
 }
 
 type RouterOSTCPFatalError struct {
