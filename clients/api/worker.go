@@ -450,7 +450,7 @@ func (worker *worker) encodeCommand(cmd cmd) ([]byte, Tag) {
 		bytes = append(bytes, word...)
 	}
 
-	return bytes, Tag(tag)
+	return bytes, tag
 }
 
 func encodeWord(word string) []byte {

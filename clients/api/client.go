@@ -24,7 +24,7 @@ type RouterOSTCPClient struct {
 	closeChan chan<- struct{}
 }
 
-// TODO support cancellation via "/cancal"
+// TODO support cancellation via "/cancel"
 // TODO support ".../listen" and its continuous output
 
 func (client *RouterOSTCPClient) SendCommand(command string, args map[string]string) (error, clients.Response) {
