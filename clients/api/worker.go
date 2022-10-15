@@ -283,7 +283,12 @@ func (worker *worker) startPump() {
 
 				delete(attrs, ".tag")
 
-				sentences := append(worker.replyChans[tag].sentences, attrs)
+				var sentences []clients.Sentence
+				if len(attrs) > 0 {
+					sentences = append(worker.replyChans[tag].sentences, attrs)
+				} else {
+					sentences = worker.replyChans[tag].sentences
+				}
 
 				env := envelope{
 					resp: clients.Response{
